@@ -25,14 +25,32 @@ mfrep
 
 ## Usage
 
-Iterates through the current working directory contents and marks the files which will be affected by the replace. If the **--path** option is specified, only the files with suitable name will be marked.
+```bash
+USAGE:
+  mfrep [options] <search_regexp> <replace_string>
 
-In each file finds all substring, that satisfy **<search_regexp>** and replaces them with **<replace>** .
+OPTIONS:
+  --path <path_regexp>, -p <path_regexp>  Regular expression to specify which files should be affected.
 
-Notice that the **<replace>** string can contain default Sprintf placeholders (`%v` or `%s`) for submatches of regexp. The number of capturing groups in regex should be equal to the number of placeholders.
+  --details, -d           Whenever the output should list affected files. (default: false)
+  --silent, -s            Whenever the output should provide no summary. (default: false)
+  --recursive, -r         Whenever the files in subdirectories should be affected too. (default: false)
 
-For recursive iteration through subdirectories use **--recursive option**. 
+  --help, -h              Show help
+```
 
-For seeing full action summary use **--detailed option**.
+## Description
 
-For seeing no summary use **--silent option**
+Iterates through the current working directory contents and marks the files which will be affected by the replace. If the `--path` option is specified, only the files with names satisfying `<path_regexp>` will be marked.
+
+In each file finds all substring, that satisfy `<search_regexp>` and replaces them with `<replace>`.
+
+Notice that the `<replace>` string can contain default Sprintf placeholders (`%v` or `%s`) for submatches of `<search_regexp>`. The number of capturing groups in regular expression should be equal to the number of placeholders.
+
+For recursive iteration through subdirectories use `--recursive`
+
+For seeing full action summary use `--details`
+
+For seeing no summary use `--silent` 
+
+For seeing help use `--help`
